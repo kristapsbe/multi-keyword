@@ -102,22 +102,26 @@ def aho_corasick(string, key_map):
                 break
             state = fails[state]
         for match in outputs.get(state, ()):
-            # need to avoid having to re-loop the mapping
+            # get the rules that match the found term
             matched_keys = [x for x in key_map.keys() if match in x]
             for key in matched_keys:
                 if temp_map[key]["prio"] > max_prio:
+                    # only check the rules if the priority is high enough
                     temp_map[key]["rule"] = [x for x in temp_map[key]["rule"] if x != match]
                     if not temp_map[key]["rule"]:
+                        # all of the rules are covered - this is the new best match
                         max_prio = temp_map[key]["prio"]
                         max_message = temp_map[key]["message"]
                         max_key = key
                 elif temp_map[key]["prio"] == -1:
+                    # the sentence ended
                     if max_prio > -1:
+                        # we had a good match in the sentence that ended
                         results.append((max_key, max_message))
+                    # reset the parameters
                     temp_map = copy.deepcopy(key_map)
                     max_prio = -1
-            pos = i - len(match) + 1
-            #results.append((pos, match))
+            pos = i-len(match)+1
     return results
 # preprocessing the string a little bit - we don't really care about the case
 # of the letters and the specific numbers (just the fact that nums are present)
