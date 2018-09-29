@@ -1,4 +1,5 @@
 import re
+import copy
 
 def aho_corasick(string, key_map):
     """
@@ -78,13 +79,17 @@ def aho_corasick(string, key_map):
                 state = fails[from_state]
                 while True:
                     res = transitions.get((state, char), state and fail_state)
-                    print(state)
                     if res != fail_state:
                         break
                     state = fails[state]
                 failure = transitions.get((state, char), state and fail_state)
                 fails[to_state] = failure
                 outputs.setdefault(to_state, []).extend(outputs.get(failure, []))
+    # setting up vars for the temp mapping
+    temp_map = copy.deepcopy(key_map)
+    max_prio = -1
+    max_message = ""
+    max_key = ()
     # Algorithm 1.
     state = 0
     results = []
@@ -97,9 +102,22 @@ def aho_corasick(string, key_map):
                 break
             state = fails[state]
         for match in outputs.get(state, ()):
-            # [x for x in key_map.keys() if "good" in x] <- match the keywords back to the map
+            # need to avoid having to re-loop the mapping
+            matched_keys = [x for x in key_map.keys() if match in x]
+            for key in matched_keys:
+                if temp_map[key]["prio"] > max_prio:
+                    temp_map[key]["rule"] = [x for x in temp_map[key]["rule"] if x != match]
+                    if not temp_map[key]["rule"]:
+                        max_prio = temp_map[key]["prio"]
+                        max_message = temp_map[key]["message"]
+                        max_key = key
+                elif temp_map[key]["prio"] == -1:
+                    if max_prio > -1:
+                        results.append((max_key, max_message))
+                    temp_map = copy.deepcopy(key_map)
+                    max_prio = -1
             pos = i - len(match) + 1
-            results.append((pos, match))
+            #results.append((pos, match))
     return results
 # preprocessing the string a little bit - we don't really care about the case
 # of the letters and the specific numbers (just the fact that nums are present)
