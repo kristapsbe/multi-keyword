@@ -21,10 +21,8 @@ def aho_corasick(string, key_map):
     transitions = {}
     # the outputs for each of the terminal nodes
     outputs = {}
-    #
+    # a dictionary for the failure functions
     fails = {}
-    # Algorithm 2.
-    #
     # construct the finite state pattern matching machine
     # construction of the machine takes time proportional
     # to the sum of the lengths of the keywords
@@ -54,8 +52,6 @@ def aho_corasick(string, key_map):
         # finish off by noting which state is supposed to return
         # the current keyword
         outputs[from_state] = [keyword]
-    # Algorithm 3.
-    #
     # pre-populate the queue and failure state dictionary
     # so that we can start off by looking at all of the initial
     # letters and can keep track of the states we're supposed to fail to
@@ -90,7 +86,6 @@ def aho_corasick(string, key_map):
     max_prio = -1
     max_message = ""
     max_key = ()
-    # Algorithm 1.
     state = 0
     results = []
     # work our way through the string
