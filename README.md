@@ -38,20 +38,9 @@ current state.
 
 ## Further reading / Alternative approaches
 
-Commentz-Walter: Any Better than Aho-Corasick for Peptide Identification?
-https://pdfs.semanticscholar.org/6ee4/c69e14c1c9997c741780180557815a4e78d0.pdf
-
-Analysis of Multiple String Pattern Matching Algorithms
-http://elvedit.com/journals/IJACSIT/wp-content/uploads/2014/09/IJACSIT-3402-AoMSPMA.pdf
-
-String Matching Methodologies: A Comparative Analysis
-https://pdfs.semanticscholar.org/5ed4/52b42f81b6efb9e68b8428c5e992b4d4d143.pdf
-
-Towards optimal packed string matching
-http://www.cs.haifa.ac.il/~oren/Publications/bpsm.pdf
-
-The Exact String Matching Problem: A Comprehensive Experimental Evaluation
-https://arxiv.org/pdf/1012.2547.pdf
-
-Simple Real-Time Constant-Space String Matching
-https://pdfs.semanticscholar.org/e880/29ee3f1b881ad1d0fcdff97bfe6eebc1b645.pdf
+* Commentz-Walter: Any Better than Aho-Corasick for Peptide Identification? https://pdfs.semanticscholar.org/6ee4/c69e14c1c9997c741780180557815a4e78d0.pdf
+* Analysis of Multiple String Pattern Matching Algorithms http://elvedit.com/journals/IJACSIT/wp-content/uploads/2014/09/IJACSIT-3402-AoMSPMA.pdf
+* String Matching Methodologies: A Comparative Analysis https://pdfs.semanticscholar.org/5ed4/52b42f81b6efb9e68b8428c5e992b4d4d143.pdf
+* Towards optimal packed string matching http://www.cs.haifa.ac.il/~oren/Publications/bpsm.pdf
+* The Exact String Matching Problem: A Comprehensive Experimental Evaluation https://arxiv.org/pdf/1012.2547.pdf
+* Simple Real-Time Constant-Space String Matching https://pdfs.semanticscholar.org/e880/29ee3f1b881ad1d0fcdff97bfe6eebc1b645.pdf
